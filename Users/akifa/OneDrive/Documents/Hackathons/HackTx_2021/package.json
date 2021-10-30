@@ -1,0 +1,25 @@
+{
+  "name": "teal",
+  "version": "1.0.0",
+  "description": "a npm marketplace for investing in content creators",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akifabidi/Teal_HackTX2021.git"
+  },
+  "keywords": [
+    "NFT"
+  ],
+  "author": "Omar Imtiaz, Akif Abidi, Noah Kester, Mayank Duraka, Kunal Mody",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akifabidi/Teal_HackTX2021/issues"
+  },
+  "homepage": "https://github.com/akifabidi/Teal_HackTX2021#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
