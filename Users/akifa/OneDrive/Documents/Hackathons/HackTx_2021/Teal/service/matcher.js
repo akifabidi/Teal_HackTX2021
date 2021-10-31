@@ -20,36 +20,39 @@ function createOrder(walletAddress, creatorId, quantity, price) {
     tmp.price = price;
     tmp.orderId = ++orderId;
     return tmp;
-}
+};
 
 
-export function addBuyOrder(buyer, creatorId, quantity, price) {
+exports.addBuyOrder = (buyer, creatorId, quantity, price) => {
   let order = createOrder(buyer, creatorId, quantity, price);
+  console.log(order);
   buyOrders[buyOrders.length] = order;
   //Take eth from buyer's wallet to our wallet
   transferEth(buyer, O_WALLET, quantity);
   //Attempt Matching
   match();
-  return {
+  /*return {
     orderId: order.orderId,
     filled: true,
-  };
-}
+  };*/
+  return {buy: buyOrders, sell: sellOrders};
+};
  
-export function addSellOrder(seller, creatorId, quantity, price) {
+exports.addSellOrder = (seller, creatorId, quantity, price) => {
    let order = createOrder(seller, creatorId, quantity, price);
    sellOrders[sellOrders.length] = order;
    //Transfer NFT from wallet to our wallet
    transferNFT(seller, O_WALLET, quantity);
    //Attempt Matching
    match();
-}
+   return {buy: buyOrders, sell: sellOrders};
+};
  
 function transferNFT(from, to, quantity) {
-}
+};
 
 function transferEth(from, to, amount) {
-}
+};
 
 /*
 Attempt matching.
@@ -70,7 +73,7 @@ function match() {
               //Transfer NFT from our wallet to buyer's wallet
               transferNFT(O_WALLET, buyOrder.walletAddress, quantity);
               //Transfer eth from our wallet to seller's wallet
-              transferEth(O_WALLET, sellOrder.walletAddress, price);
+              transferEth(O_WALLET, sellOrder.walletAddress, price * 0.95);
               buyOrder.quantity -= quantity;
               sellOrder.quantity -= quantity;
               if (buyOrder.quantity == 0) {
@@ -82,4 +85,4 @@ function match() {
               }
          } 
     }
-}
+};
